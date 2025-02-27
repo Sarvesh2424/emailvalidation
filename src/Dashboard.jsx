@@ -114,7 +114,7 @@ export default function Dashboard({ emailsList }) {
 
       {filteredResults.length === 0 ? (
         <p className="mt-8 text-white text-center text-lg">
-          No results found... add some emails to get started!
+          No data found... add some emails to get started!
         </p>
       ) : (
         <ResultTable
