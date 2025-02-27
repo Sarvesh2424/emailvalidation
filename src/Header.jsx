@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Mail, Shield } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export default function Header() {
   const location = useLocation();

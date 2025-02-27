@@ -1,7 +1,10 @@
 import React from "react";
-import { Github, Instagram, Mail } from "lucide-react";
+import { Github, Instagram, Linkedin } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Footer() {
+  const location = useLocation();
+
   return (
     <footer className="bg-white">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -12,20 +15,38 @@ export default function Footer() {
             </h3>
             <ul className="mt-4 space-y-4">
               <li>
-                <a
-                  href="#"
-                  className="text-base text-gray-500 hover:text-gray-700 transition-colors"
-                >
-                  Home
-                </a>
+                {location.pathname === "/dashboard" ? (
+                  <Link
+                    to="/"
+                    className="text-base text-gray-500 hover:text-gray-700 transition-colors"
+                  >
+                    Home
+                  </Link>
+                ) : (
+                  <a
+                    href="#"
+                    className="text-base text-gray-500 hover:text-gray-700 transition-colors"
+                  >
+                    Home
+                  </a>
+                )}
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-base text-gray-500 hover:text-gray-700 transition-colors"
-                >
-                  Dashboard
-                </a>
+              {location.pathname === "/" ? (
+                  <Link
+                    to="/dashboard"
+                    className="text-base text-gray-500 hover:text-gray-700 transition-colors"
+                  >
+                    Dashboard
+                  </Link>
+                ) : (
+                  <a
+                    href="#"
+                    className="text-base text-gray-500 hover:text-gray-700 transition-colors"
+                  >
+                    Dashboard
+                  </a>
+                )}
               </li>
             </ul>
           </div>
@@ -72,10 +93,10 @@ export default function Footer() {
                 <Instagram className="h-6 w-6" />
               </a>
               <a
-                href="https://mail.google.com/"
+                href="https://www.linkedin.com/in/sarvesh-p-b09979283/"
                 className="text-gray-400 hover:text-gray-700 transition-colors"
               >
-                <Mail className="h-6 w-6" />
+                <Linkedin className="h-6 w-6" />
               </a>
             </div>
           </div>
@@ -83,7 +104,7 @@ export default function Footer() {
 
         <div className="mt-8 border-t border-gray-200 pt-8">
           <p className="text-base text-gray-400 text-center">
-            &copy; {new Date().getFullYear()} EmailValidator. All rights
+            &copy; {new Date().getFullYear()} Email Validator. All rights
             reserved.
           </p>
         </div>

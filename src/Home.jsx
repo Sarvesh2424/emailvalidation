@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { validateEmail } from "./emailValidation";
 import { useNavigate } from "react-router-dom";
 import { Upload, CheckCircle, Shield, Zap } from "lucide-react";
+import ProcessingScreen from "./ProcessingScreen";
 
 export default function Home({ setEmailsList }) {
   const [emails, setEmails] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -16,11 +18,17 @@ export default function Home({ setEmailsList }) {
     });
     console.log(emailsList);
     setEmailsList(emailsList);
-    navigate("/dashboard");
+    setIsProcessing(true);
+
+    setTimeout(() => {
+      setIsProcessing(false);
+      navigate("/dashboard");
+    }, 3000);
   };
 
   return (
     <div className="flex-1">
+      {isProcessing && <ProcessingScreen />}
       <div className="bg-black">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -67,7 +75,7 @@ export default function Home({ setEmailsList }) {
                 >
                   <div className="flex items-center gap-2">
                     <Upload className="h-5 w-5 text-black" />
-                    Validate Emails
+                    Start Validation Now!
                   </div>
                 </button>
               </div>
